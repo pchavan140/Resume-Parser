@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Resume Parser</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" >
+  function validate(){ 
+    var str_name = document.forms["registerForm"]["name"].value;
+    var str_email = document.forms["registerForm"]["email"].value;
+    var int_mobile = document.forms["registerForm"]["mobile"].value;
+    var str_password = document.forms["registerForm"]["password"].value;
+    var str_cpassword = document.forms["registerForm"]["confirmpassword"].value;
+
+    var letters = /^[A-Za-z]+$/;                    //Regular Expression Accept only letters
+    var numbers = /^[0-9]+$/;  
+
+    if(!int_mobile.match(numbers)){  
+      alert("Mobile number should have only numbers.");  
+      return false;  
+    }
+    if(int_mobile<10 && int_mobile>10) { 
+      alert("Mobile Number must be of 10 Digits only.");  
+      return false;  
+    }
+    // if(!str_name.match(letters)){  
+    //   alert("Full name should have only Chracters");  
+    //   return false;  
+    // }
+    if(str_password<8) { 
+      alert("Password must be at least 8 characters long.");  
+      return false;  
+    }  
+    if(!str_password.match(preg)){  
+      alert("Password must Have One Upper case LowerCase Special Character Digit");  
+      return false; 
+    }  
+    if(!str_password.match(str_cpassword)){  
+      alert("Password and Confirm password must be match.");  
+      return false; 
+    }
+                           
+  }
+</script>
+</head>
+<body>
+<section>
+    <div id="content">
+      <br><br>
+      <h1 align="center">#Resume Parser#</h1>
+        <div class="row" style="padding: 50px">
+            <div class="col-md-6">
+                        <div class="box">
+                            <center><h2>New account</h2></center><hr>
+                              <div class="jumbotron">   
+                            <form action="registerconn.php" method="post" name="registerForm" onsubmit="return validate();">
+                              
+                              <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="name" class="form-control" id="name" name="name" placeholder="Full name"  required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile">Mobile number</label>
+                                    <input type="mobile" class="form-control" id="mobile" name="mobile" placeholder="Mobile number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email ID</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email ID" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" id="password" maxlength="10" name="password" autocomplete="off" placeholder="Password"  required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm-Password</label>
+                                    <input type="password" class="form-control" id="confirmpassword" maxlength="10" name="confirmpassword" autocomplete="off" placeholder="Confirm-Password" required>
+                                </div>
+                                <div class="text-center">
+                                    <!-- <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
+                                    <button type="reset" class="btn btn-primary"><i class="fa fa-user-md"></i> Cancel</button>
+ -->
+                                <input type="submit" class="btn btn-primary" name="submit" value="Register">
+                                <input type="reset" class="btn btn-primary" name="reset" value="Reset">
+                                </div>
+                            </form>
+                              </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6" style="padding-right: 20px;">
+                        <div class="box">
+                          <center> <h2>Login as Admin/user</h2></center>
+                          <hr>
+                            <div class="jumbotron">
+                            <form action="login.php" method="post">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="email" class="form-control" id="email-modal" placeholder="Email ID" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" id="password-modal" placeholder="Password" name="password">
+                                </div>
+    
+                                <p class="text-center">
+                                    <button type=submit class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                                    <button type=reset class="btn btn-primary"><i class="fa fa-sign-in"></i>Cancel</button>
+                                </p>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /#content -->
+    </section>
+</body>
+</html>
